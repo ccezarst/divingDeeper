@@ -1,6 +1,7 @@
  using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.Build.Content;
 using UnityEngine;
 
 public class SubScript : MonoBehaviour
@@ -12,9 +13,13 @@ public class SubScript : MonoBehaviour
     private GameObject sub;
     private GameObject subModel;
     private GameObject CameraPos;
+    private GameManager manager;
     // Start is called before the first frame update
     void Start()
     {
+        // get the manager instance so that for example the sub enters a station it can tell the game manager
+        manager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+        Debug.Log(manager);
         sub = this.gameObject;
         subModel = sub.transform.Find("model").gameObject;
         CameraPos = sub.transform.Find("CameraPos").gameObject;
@@ -24,6 +29,21 @@ public class SubScript : MonoBehaviour
             return true;
         }else{
             return false;
+        }
+    }
+    void OnCollisionEnter(Collision other)
+    {
+        Debug.Log(1);
+        if (other.gameObject.tag == "SubmarineStation"){
+            manager.enterStation();
+        }
+    }
+    void OnCollisionExit(Collision other)
+    {
+        Debug.Log(2);
+        if (other.gameObject.tag == "SubmarineStation")
+        {
+            manager.exitStation();
         }
     }
     // Update is called once per frame

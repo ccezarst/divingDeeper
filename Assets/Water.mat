@@ -54,15 +54,17 @@ Material:
     - _IOR: 1
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _alpha: 0.83
+    - _alpha: 1
     - _color_mult: 10
+    - _idk: 0
     - _metal: 0
+    - _noise_intensity: 0.219
     - _noise_scale: 17.9
-    - _smooth: 1
-    - _speed: 0.531
+    - _smooth: 0.1
+    - _speed: 0.654
     m_Colors:
     - _color: {r: 0, g: 0, b: 0.2, a: 0}
-    - _deep_color: {r: 0, g: 0.02, b: 0.16, a: 0}
-    - _light_color: {r: 0, g: 0.38, b: 0.52, a: 0}
+    - _deep_color: {r: 0, g: 0.02, b: 1.2, a: 0}
+    - _light_color: {r: 0, g: 0.38, b: 1.92, a: 0}
     - _pos: {r: 0, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []
