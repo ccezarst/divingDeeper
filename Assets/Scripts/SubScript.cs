@@ -48,11 +48,11 @@ public class SubScript : MonoBehaviour
 
             if (Input.GetKey(KeyCode.E))
             {
-                sub.transform.position += new Vector3(0f, 2.3f, 0f) * Time.deltaTime;
+                sub.transform.position += new Vector3(0f, 10f, 0f) * Time.deltaTime;
             }
             if (Input.GetKey(KeyCode.Q))
             {
-                sub.transform.position += new Vector3(0f, -2.3f, 0f) * Time.deltaTime;
+                sub.transform.position += new Vector3(0f, -10f, 0f) * Time.deltaTime;
             }
         }
         else
