@@ -1,4 +1,4 @@
-using System.Collections;
+ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -9,6 +9,7 @@ public class SubScript : MonoBehaviour
     private GameObject sub;
     private GameObject subModel;
     private GameObject CameraPos;
+    public float speed = 10f;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,7 +26,7 @@ public class SubScript : MonoBehaviour
             inSub = true;
             if (Input.GetKey(KeyCode.W))
             {
-                sub.GetComponent<Rigidbody>().velocity = sub.transform.forward * 6f;
+                sub.GetComponent<Rigidbody>().velocity = sub.transform.forward * speed;
             }
             if (Input.GetKey(KeyCode.S))
             {
