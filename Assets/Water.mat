@@ -55,9 +55,11 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     - _alpha: 0.83
+    - _color_mult: 10
     - _metal: 0
+    - _noise_scale: 17.9
     - _smooth: 1
-    - _speed: 0.062
+    - _speed: 0.531
     m_Colors:
     - _color: {r: 0, g: 0, b: 0.2, a: 0}
     - _deep_color: {r: 0, g: 0.02, b: 0.16, a: 0}
