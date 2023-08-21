@@ -16,8 +16,6 @@ public class CameraScript : MonoBehaviour
     {
         player = this.gameObject;
         Camera.main.fieldOfView = 100;
-        Camera.main.transform.rotation = Quaternion.Euler(0,0,0);
-        transform.rotation = Quaternion.Euler(0,0,0);
         Cursor.lockState = CursorLockMode.Locked;
     }
 

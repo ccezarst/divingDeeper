@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public GameObject stationExitText;
     public GameObject player;
     public bool inStation = false;
+    public bool plrInStation = false;
     public bool inSub = true;
 
     private Vector3 lastPlayerSpawn;
@@ -45,6 +46,8 @@ public class GameManager : MonoBehaviour
         player.transform.position = lastPlayerSpawn;
         Camera.main.transform.parent = player.transform;
         Camera.main.transform.position = player.transform.Find("CameraPos").gameObject.transform.position;
+        GameObject sub = GameObject.Find("Titan");
+        sub.GetComponent<Rigidbody>().velocity = Vector3.zero;
         inSub = false;
     }
     public void enterSub(){

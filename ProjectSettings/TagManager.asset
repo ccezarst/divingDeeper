@@ -6,6 +6,7 @@ TagManager:
   tags:
   - SubmarineStation
   - GameManager
+  - Submarine
   layers:
   - Default
   - TransparentFX

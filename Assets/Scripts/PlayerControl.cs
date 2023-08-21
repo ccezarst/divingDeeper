@@ -4,16 +4,20 @@ using UnityEngine;
 
 public class PlayerControl : MonoBehaviour
 {
+    private GameObject plr;
     private Rigidbody player;
     private float moveSpeed = 130f;
     public bool isRagdolled = false;
     public bool isGrounded = false;
     public bool isFlying = false;
-    private bool waiting = false;
+    private GameObject sub;
 
     void Start()
     {
-        player = this.gameObject.GetComponent<Rigidbody>();
+        plr = this.gameObject;
+        plr.SetActive(false);
+        player = plr.GetComponent<Rigidbody>();
+        sub = GameObject.FindWithTag("Submarine").gameObject;
     }
 
 
@@ -28,8 +32,9 @@ public class PlayerControl : MonoBehaviour
     }
     void FixedUpdate()
     {
-        if (isRagdolled == false)
+        if (isRagdolled == false && sub.GetComponent<SubScript>().inSub == false)
         {
+            plr.SetActive(true);
             player.freezeRotation = true;
             // W key
             if (Input.GetKey(KeyCode.W))
@@ -74,6 +79,10 @@ public class PlayerControl : MonoBehaviour
             {
                 player.AddForce(new Vector3(0,1,0) * 10000, ForceMode.Impulse);
             }
+        }
+        else
+        {
+            plr.SetActive(false);
         }
     }
 }

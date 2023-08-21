@@ -25,7 +25,8 @@ public class SubScript : MonoBehaviour
         CameraPos = sub.transform.Find("CameraPos").gameObject;
     }
     private bool isInSub(){
-        if(Camera.main.transform.parent == sub.gameObject.transform){
+        sub = sub;
+        if(Camera.main.transform.parent == sub.transform){
             return true;
         }else{
             return false;
@@ -66,10 +67,7 @@ public class SubScript : MonoBehaviour
             }
             if (Input.GetKey(KeyCode.S))
             {
-                if (sub.GetComponent<Rigidbody>().velocity.z >= 1f)
-                {
-                    sub.GetComponent<Rigidbody>().velocity -= sub.transform.forward * 1f;
-                }
+                sub.GetComponent<Rigidbody>().velocity = Vector3.zero;
             }
 
             if (Input.GetKey(KeyCode.D))
