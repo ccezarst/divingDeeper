@@ -25,19 +25,23 @@ public class SubScript : MonoBehaviour
         CameraPos = sub.transform.Find("CameraPos").gameObject;
     }
     private bool isInSub(){
-        sub = sub;
-        if(Camera.main.transform.parent == sub.transform){
-            return true;
-        }else{
-            return false;
-        }
+        return manager.inSub;
     }
     private void OnCollisionEnter(Collision collision)
     {
+        if(collision.gameObject.tag == "Player"){
+            manager.updateNearSub(true);
+            return;
+        }
         subCollision(collision);
     }
     private void OnCollisionExit(Collision collision)
     {
+        if (collision.gameObject.tag == "Player")
+        {
+            manager.updateNearSub(false);
+            return;
+        }
         subCollisionExit(collision);
     }
 
@@ -60,7 +64,6 @@ public class SubScript : MonoBehaviour
     {
         if (isInSub())
         {
-            inSub = true;
             if (Input.GetKey(KeyCode.W))
             {
                 sub.GetComponent<Rigidbody>().velocity = sub.transform.forward * speed;
@@ -88,9 +91,14 @@ public class SubScript : MonoBehaviour
             {
                 sub.transform.position += new Vector3(0f, -heightSpeed, 0f) * Time.deltaTime;
             }
-            if (Input.GetKey(KeyCode.F)){
-                manager.actionSub();
+            // dont change
+            if(inSub){
+                if (Input.GetKeyDown(KeyCode.F))
+                {
+                    manager.actionSub();
+                }
             }
+            inSub = true;
         }
         else
         {

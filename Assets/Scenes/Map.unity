@@ -137,12 +137,12 @@ GameObject:
   - component: {fileID: 146124077}
   - component: {fileID: 146124076}
   m_Layer: 5
-  m_Name: stationExit
+  m_Name: subEnter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &146124075
 RectTransform:
   m_ObjectHideFlags: 0
@@ -169,7 +169,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 146124074}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
@@ -344,7 +344,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &376220975
 RectTransform:
   m_ObjectHideFlags: 0
@@ -371,7 +371,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 376220974}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
@@ -876,12 +876,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06e3b86f10faac0499113120ca7586c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stationEnterText: {fileID: 376220974}
-  stationExitText: {fileID: 146124074}
+  subExitText: {fileID: 376220974}
+  subEnterText: {fileID: 146124074}
   player: {fileID: 1498917644}
   inStation: 0
-  plrInStation: 0
   inSub: 1
+  nextToSub: 0
 --- !u!4 &1113145716
 Transform:
   m_ObjectHideFlags: 0

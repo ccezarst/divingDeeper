@@ -6,6 +6,7 @@ public class PlayerControl : MonoBehaviour
 {
     private GameObject plr;
     private Rigidbody player;
+    private GameManager manager;
     private float moveSpeed = 130f;
     public bool isRagdolled = false;
     public bool isGrounded = false;
@@ -14,6 +15,8 @@ public class PlayerControl : MonoBehaviour
 
     void Start()
     {
+        // nega dick
+        manager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         plr = this.gameObject;
         plr.SetActive(false);
         player = plr.GetComponent<Rigidbody>();
@@ -73,7 +76,11 @@ public class PlayerControl : MonoBehaviour
                     player.AddForce(transform.right * moveSpeed * Time.deltaTime, ForceMode.VelocityChange);
                 }
             }
-            
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                manager.actionSub();
+            }
+
             // space key
             if (Input.GetKey(KeyCode.Space) && isGrounded == true)
             {
