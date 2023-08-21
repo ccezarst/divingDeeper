@@ -22,7 +22,7 @@ public class SubScript : MonoBehaviour
     {
         speed = 10f;
         rotSpeed = 10f;
-        heightSpeed = 1f;
+        heightSpeed = 3.5f;
         // get the manager instance so that for example the sub enters a station it can tell the game manager
         manager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         Debug.Log(manager);

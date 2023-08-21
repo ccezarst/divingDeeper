@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        changeTextVisibility(subEnterText, onPlatform);
     }
 
     IEnumerator checkActive(GameObject thingToCheck,bool value)

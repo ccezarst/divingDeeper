@@ -65,10 +65,38 @@ MonoBehaviour:
     m_Value: {x: 0.3244102, y: 0.34237406, z: 1, w: 0.05212865}
   gamma:
     m_OverrideState: 1
-    m_Value: {x: 0.6036513, y: 0.89923805, z: 1, w: -0.034752395}
+    m_Value: {x: 0.6036513, y: 0.89923805, z: 1, w: -0.08770915}
   gain:
     m_OverrideState: 1
     m_Value: {x: 0.3102696, y: 0.54978174, z: 1, w: 0.017376198}
+--- !u!114 &-1523588194156329342
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5e1dc532bcb41949b58bc4f2abfbb7e, type: 3}
+  m_Name: LensDistortion
+  m_EditorClassIdentifier: 
+  active: 1
+  intensity:
+    m_OverrideState: 1
+    m_Value: 0.28
+  xMultiplier:
+    m_OverrideState: 1
+    m_Value: 1
+  yMultiplier:
+    m_OverrideState: 1
+    m_Value: 1
+  center:
+    m_OverrideState: 1
+    m_Value: {x: 0.5, y: 0.5}
+  scale:
+    m_OverrideState: 1
+    m_Value: 1.22
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -86,6 +114,55 @@ MonoBehaviour:
   - {fileID: -8635181546912195761}
   - {fileID: 4901462060432942458}
   - {fileID: -6569571353488968660}
+  - {fileID: 467047171211962042}
+  - {fileID: -1523588194156329342}
+  - {fileID: 9074951354200548605}
+--- !u!114 &467047171211962042
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c01700fd266d6914ababb731e09af2eb, type: 3}
+  m_Name: DepthOfField
+  m_EditorClassIdentifier: 
+  active: 1
+  mode:
+    m_OverrideState: 1
+    m_Value: 1
+  gaussianStart:
+    m_OverrideState: 1
+    m_Value: 20
+  gaussianEnd:
+    m_OverrideState: 1
+    m_Value: 57
+  gaussianMaxRadius:
+    m_OverrideState: 1
+    m_Value: 1.5
+  highQualitySampling:
+    m_OverrideState: 1
+    m_Value: 1
+  focusDistance:
+    m_OverrideState: 1
+    m_Value: 8.72
+  aperture:
+    m_OverrideState: 1
+    m_Value: 4.5
+  focalLength:
+    m_OverrideState: 1
+    m_Value: 47
+  bladeCount:
+    m_OverrideState: 1
+    m_Value: 5
+  bladeCurvature:
+    m_OverrideState: 1
+    m_Value: 1
+  bladeRotation:
+    m_OverrideState: 1
+    m_Value: 28
 --- !u!114 &4901462060432942458
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -126,3 +203,28 @@ MonoBehaviour:
   blueOutBlueIn:
     m_OverrideState: 0
     m_Value: 200
+--- !u!114 &9074951354200548605
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29fa0085f50d5e54f8144f766051a691, type: 3}
+  m_Name: FilmGrain
+  m_EditorClassIdentifier: 
+  active: 1
+  type:
+    m_OverrideState: 1
+    m_Value: 0
+  intensity:
+    m_OverrideState: 1
+    m_Value: 0.784
+  response:
+    m_OverrideState: 1
+    m_Value: 0.705
+  texture:
+    m_OverrideState: 1
+    m_Value: {fileID: 0}
