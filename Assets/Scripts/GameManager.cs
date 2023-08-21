@@ -24,34 +24,34 @@ public class GameManager : MonoBehaviour
     }
     public void enterStation(Vector3 plrSpawn){
         inStation = true;
-        stationEnterText.active = true;
+        stationEnterText.SetActive(true);
         lastPlayerSpawn = plrSpawn;
     }
     public void exitStation()
     {
         inStation = false;
-        stationEnterText.active = false;
+        stationEnterText.SetActive(false);
     }
     // logic here cuz it's simpler
     public void actionSub(){
-        if (inSub){
+        if (inSub && inStation){
             exitSub();
-        }else{
+        }else if (inStation){
             enterSub();
         }
     }
     public void exitSub(){
-        player.active = true;
+        player.SetActive(true);
         player.transform.position = lastPlayerSpawn;
         Camera.main.transform.parent = player.transform;
         Camera.main.transform.position = player.transform.Find("CameraPos").gameObject.transform.position;
-        inSub = true;
+        inSub = false;
     }
     public void enterSub(){
         GameObject sub = GameObject.Find("Titan");
         Camera.main.transform.parent = sub.transform;
         Camera.main.transform.position = sub.transform.Find("CameraPos").gameObject.transform.position;
-        player.active = false;
-        inSub = false;
+        player.SetActive(false);
+        inSub = true;
     }
 }
