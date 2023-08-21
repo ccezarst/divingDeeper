@@ -7,7 +7,7 @@ public class PlayerControl : MonoBehaviour
     private GameObject plr;
     private Rigidbody player;
     private GameManager manager;
-    private float moveSpeed = 130f;
+    private float moveSpeed = 70f;
     public bool isRagdolled = false;
     public bool isGrounded = false;
     public bool isFlying = false;
@@ -33,6 +33,15 @@ public class PlayerControl : MonoBehaviour
     {
         isGrounded = false;
     }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            manager.actionSub();
+        }
+    }
+
     void FixedUpdate()
     {
         if (isRagdolled == false && sub.GetComponent<SubScript>().inSub == false)
@@ -42,6 +51,7 @@ public class PlayerControl : MonoBehaviour
             // W key
             if (Input.GetKey(KeyCode.W))
             {
+
                 player.AddForce(transform.forward * moveSpeed * Time.deltaTime, ForceMode.VelocityChange);
             }
 
@@ -75,10 +85,6 @@ public class PlayerControl : MonoBehaviour
                 {
                     player.AddForce(transform.right * moveSpeed * Time.deltaTime, ForceMode.VelocityChange);
                 }
-            }
-            if (Input.GetKey(KeyCode.F))
-            {
-                manager.actionSub();
             }
 
             // space key

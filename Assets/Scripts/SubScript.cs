@@ -16,6 +16,7 @@ public class SubScript : MonoBehaviour
     private GameObject subModel;
     private GameObject CameraPos;
     private GameManager manager;
+    private GameObject prop;
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +31,8 @@ public class SubScript : MonoBehaviour
         subModel = sub.transform.Find("model").gameObject;
         subRB = sub.GetComponent<Rigidbody>(); 
         CameraPos = sub.transform.Find("CameraPos").gameObject;
+        prop = sub.transform.Find("model").gameObject;
+        prop = prop.transform.Find("propeller").gameObject;
     }
 
 
@@ -65,6 +68,7 @@ public class SubScript : MonoBehaviour
             if (Input.GetKey(KeyCode.W))
             {
                 sub.GetComponent<Rigidbody>().velocity = sub.transform.forward * speed;
+                prop.transform.Rotate(0f, 0f, -3.5f);
             }
             if (Input.GetKey(KeyCode.S))
             {
@@ -84,11 +88,18 @@ public class SubScript : MonoBehaviour
 
             if (Input.GetKey(KeyCode.E))
             {
-                sub.transform.position += new Vector3(0f, heightSpeed, 0f) * Time.deltaTime;
+                if (sub.transform.position.y < 20.21f)
+                {
+                    subRB.velocity += new Vector3(0f, heightSpeed, 0f) * Time.deltaTime;
+                }
+                else
+                {
+                    subRB.velocity -= new Vector3(0f,subRB.velocity.y,0f);
+                }
             }
             if (Input.GetKey(KeyCode.Q))
             {
-                sub.transform.position += new Vector3(0f, -heightSpeed, 0f) * Time.deltaTime;
+                subRB.velocity += new Vector3(0f, -heightSpeed, 0f) * Time.deltaTime;
             }
             // dont change
             if(inSub){

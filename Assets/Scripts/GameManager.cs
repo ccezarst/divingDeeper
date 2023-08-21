@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
     IEnumerator checkActive(GameObject thingToCheck,bool value)
     {
         //after 0.01 seconds rechecks active value and attempts to activate/deactivate if it wasnt how it was intended
-        yield return new WaitForSeconds(0.01f);
+        yield return new WaitForSeconds(0.001f);
         if(thingToCheck.active != value)
         {
             thingToCheck.SetActive(value);
