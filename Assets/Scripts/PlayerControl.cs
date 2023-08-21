@@ -76,7 +76,7 @@ public class PlayerControl : MonoBehaviour
                     player.AddForce(transform.right * moveSpeed * Time.deltaTime, ForceMode.VelocityChange);
                 }
             }
-            if (Input.GetKeyDown(KeyCode.F))
+            if (Input.GetKey(KeyCode.F))
             {
                 manager.actionSub();
             }

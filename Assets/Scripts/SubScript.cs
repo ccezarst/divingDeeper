@@ -6,59 +6,57 @@ using UnityEngine;
 
 public class SubScript : MonoBehaviour
 {
+
     public bool inSub = false;
-    [Range(0, 20)]public float speed = 10f;
-    [Range(0, 20)]public float heightSpeed = 10f;
-    [Range(0, 2)]public float rotSpeed = 1f;
+    [Range(0, 20)]public float speed;
+    [Range(0, 20)]public float heightSpeed;
+    [Range(10, 100)]public float rotSpeed;
     private GameObject sub;
+    private Rigidbody subRB;
     private GameObject subModel;
     private GameObject CameraPos;
     private GameManager manager;
+
     // Start is called before the first frame update
     void Start()
     {
+        speed = 10f;
+        rotSpeed = 10f;
+        heightSpeed = 1f;
         // get the manager instance so that for example the sub enters a station it can tell the game manager
         manager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         Debug.Log(manager);
         sub = this.gameObject;
         subModel = sub.transform.Find("model").gameObject;
+        subRB = sub.GetComponent<Rigidbody>(); 
         CameraPos = sub.transform.Find("CameraPos").gameObject;
     }
+
+
     private bool isInSub(){
         return manager.inSub;
     }
+
+
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag == "Player"){
-            manager.updateNearSub(true);
-            return;
-        }
-        subCollision(collision);
-    }
-    private void OnCollisionExit(Collision collision)
-    {
-        if (collision.gameObject.tag == "Player")
+        if(collision.gameObject.tag == "SubmarineStation")
         {
-            manager.updateNearSub(false);
-            return;
+            manager.enterStation();
         }
-        subCollisionExit(collision);
     }
 
-    public void subCollision(Collision other)
+
+    private void OnCollisionExit(Collision collision)
     {
-        if (other.gameObject.tag == "SubmarineStation"){
-            // get the player spawn pos
-            manager.enterStation(other.transform.Find("PlayerSpawn").gameObject.transform.position);
-        }
-    }
-    public void subCollisionExit(Collision other)
-    {
-        if (other.gameObject.tag == "SubmarineStation")
+        if (collision.gameObject.tag == "SubmarineStation")
         {
             manager.exitStation();
         }
     }
+
+
+
     // Update is called once per frame
     void Update()
     {
@@ -75,11 +73,12 @@ public class SubScript : MonoBehaviour
 
             if (Input.GetKey(KeyCode.D))
             {
-                sub.transform.Rotate(0f,rotSpeed,0f);
+                //rotates from back, used -rotspeed so it pushes to left therefor making the front go to the right
+                subRB.AddForceAtPosition(new Vector3(-rotSpeed,0f,0f),sub.transform.position - new Vector3(0f,0f, 2.19f), ForceMode.Force);
             }
             if (Input.GetKey(KeyCode.A))
             {
-                sub.transform.Rotate(0f, -rotSpeed, 0f);
+                subRB.AddForceAtPosition(new Vector3(rotSpeed, 0f, 0f), sub.transform.position - new Vector3(0f, 0f, 2.19f), ForceMode.Force);
 
             }
 

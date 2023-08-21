@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     public GameObject player;
     public bool inStation = false;
     public bool inSub = true;
-    public bool nextToSub = false;
+    public bool onPlatform = false;
     private Vector3 lastPlayerSpawn;
     // Start is called before the first frame update
 
@@ -30,31 +30,35 @@ public class GameManager : MonoBehaviour
         
     }
 
-    public void updateNearSub(bool newVal){
-        nextToSub = newVal;
-        if (newVal){
-            changeTextVisibility(subEnterText, true);
+    IEnumerator checkActive(GameObject thingToCheck,bool value)
+    {
+        //after 0.01 seconds rechecks active value and attempts to activate/deactivate if it wasnt how it was intended
+        yield return new WaitForSeconds(0.01f);
+        if(thingToCheck.active != value)
+        {
+            thingToCheck.SetActive(value);
         }
-        else{
-            changeTextVisibility(subEnterText, false);
-        }
+
     }
 
-    public void enterStation(Vector3 plrSpawn){
+    public void enterStation(){
         if(inSub){
             inStation = true;
             changeTextVisibility(subExitText, true);
-            lastPlayerSpawn = plrSpawn;
         }
     }
+
+
     public void exitStation()
     {
         inStation = false;
         changeTextVisibility(subExitText, false);
     }
+
+
     // logic here cuz it's simpler
     public void actionSub(){
-        if (nextToSub)
+        if (onPlatform)
         {
             enterSub();
         }
@@ -65,7 +69,8 @@ public class GameManager : MonoBehaviour
     public void exitSub(){
         changeTextVisibility(subExitText, false);
         player.SetActive(true);
-        player.transform.position = lastPlayerSpawn;
+        StartCoroutine(checkActive(player,true));
+        player.transform.position = GameObject.Find("PlayerSpawn").transform.position;
         Camera.main.transform.parent = player.transform;
         Camera.main.transform.position = player.transform.Find("CameraPos").gameObject.transform.position;
         Camera.main.transform.rotation = player.transform.Find("CameraPos").gameObject.transform.rotation;
@@ -75,17 +80,19 @@ public class GameManager : MonoBehaviour
         inSub = false;
     }
     public void enterSub(){
-        Debug.Log("go kys");
-        GameObject sub = GameObject.Find("Titan");
-        sub.GetComponent<Rigidbody>().isKinematic = false;
-        Camera.main.transform.parent = sub.transform;
-        Camera.main.transform.position = sub.transform.Find("CameraPos").gameObject.transform.position;
-        Camera.main.transform.rotation = sub.transform.Find("CameraPos").gameObject.transform.rotation;
-        player.SetActive(false);
-        inSub = true;
-        nextToSub = false;
-        changeTextVisibility(subEnterText, false);
-        changeTextVisibility(subExitText, true);
-        Debug.Log("go kys2");
+        if (onPlatform)
+        {
+            GameObject sub = GameObject.Find("Titan");
+            sub.GetComponent<Rigidbody>().isKinematic = false;
+            Camera.main.transform.parent = sub.transform;
+            Camera.main.transform.position = sub.transform.Find("CameraPos").gameObject.transform.position;
+            Camera.main.transform.rotation = sub.transform.Find("CameraPos").gameObject.transform.rotation;
+            player.SetActive(false);
+            StartCoroutine(checkActive(player, false));
+            inSub = true;
+            onPlatform = false;
+            changeTextVisibility(subEnterText, false);
+            changeTextVisibility(subExitText, true);
+        }
     }
 }
