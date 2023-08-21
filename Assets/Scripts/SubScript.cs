@@ -31,16 +31,24 @@ public class SubScript : MonoBehaviour
             return false;
         }
     }
-    void OnCollisionEnter(Collision other)
+    private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log(1);
+        subCollision(collision);
+    }
+    private void OnCollisionExit(Collision collision)
+    {
+        subCollisionExit(collision);
+    }
+
+    public void subCollision(Collision other)
+    {
         if (other.gameObject.tag == "SubmarineStation"){
-            manager.enterStation();
+            // get the player spawn pos
+            manager.enterStation(other.transform.Find("PlayerSpawn").gameObject.transform.position);
         }
     }
-    void OnCollisionExit(Collision other)
+    public void subCollisionExit(Collision other)
     {
-        Debug.Log(2);
         if (other.gameObject.tag == "SubmarineStation")
         {
             manager.exitStation();
@@ -81,6 +89,9 @@ public class SubScript : MonoBehaviour
             if (Input.GetKey(KeyCode.Q))
             {
                 sub.transform.position += new Vector3(0f, -heightSpeed, 0f) * Time.deltaTime;
+            }
+            if (Input.GetKey(KeyCode.F)){
+                manager.actionSub();
             }
         }
         else
