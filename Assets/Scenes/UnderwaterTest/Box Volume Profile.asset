@@ -21,10 +21,10 @@ MonoBehaviour:
     m_Value: {x: 0.5, y: 0.4}
   intensity:
     m_OverrideState: 1
-    m_Value: 0.533
+    m_Value: 1
   smoothness:
     m_OverrideState: 1
-    m_Value: 0.267
+    m_Value: 0.63
   rounded:
     m_OverrideState: 0
     m_Value: 0
@@ -62,13 +62,13 @@ MonoBehaviour:
   active: 1
   lift:
     m_OverrideState: 1
-    m_Value: {x: 0.3244102, y: 0.34237406, z: 1, w: 0.05212865}
+    m_Value: {x: 0.3244102, y: 0.34237406, z: 1, w: -0.05052313}
   gamma:
     m_OverrideState: 1
-    m_Value: {x: 0.6036513, y: 0.89923805, z: 1, w: -0.08770915}
+    m_Value: {x: 0.6036513, y: 0.89923805, z: 1, w: -0.41277328}
   gain:
     m_OverrideState: 1
-    m_Value: {x: 0.3102696, y: 0.54978174, z: 1, w: 0.017376198}
+    m_Value: {x: 0.3102696, y: 0.54978174, z: 1, w: -0.88109475}
 --- !u!114 &-1523588194156329342
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -175,7 +175,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdfbdbb87d3286943a057f7791b43141, type: 3}
   m_Name: ChannelMixer
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   redOutRedIn:
     m_OverrideState: 0
     m_Value: 100
@@ -218,10 +218,10 @@ MonoBehaviour:
   active: 1
   type:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 3
   intensity:
     m_OverrideState: 1
-    m_Value: 0.784
+    m_Value: 1
   response:
     m_OverrideState: 1
     m_Value: 0.705

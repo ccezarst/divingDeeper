@@ -11,6 +11,7 @@ public class SubScript : MonoBehaviour
     [Range(0, 20)]public float speed;
     [Range(0, 20)]public float heightSpeed;
     [Range(10, 100)]public float rotSpeed;
+    public float maxHeight = 25f;
     private GameObject sub;
     private Rigidbody subRB;
     private GameObject subModel;
@@ -40,8 +41,7 @@ public class SubScript : MonoBehaviour
         return manager.inSub;
     }
 
-
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collision)
     {
         if(collision.gameObject.tag == "SubmarineStation")
         {
@@ -50,7 +50,7 @@ public class SubScript : MonoBehaviour
     }
 
 
-    private void OnCollisionExit(Collision collision)
+    private void OnTriggerExit(Collider collision)
     {
         if (collision.gameObject.tag == "SubmarineStation")
         {
@@ -88,7 +88,7 @@ public class SubScript : MonoBehaviour
 
             if (Input.GetKey(KeyCode.E))
             {
-                if (sub.transform.position.y < 20.21f)
+                if (sub.transform.position.y < maxHeight)
                 {
                     subRB.velocity += new Vector3(0f, heightSpeed, 0f) * Time.deltaTime;
                 }
