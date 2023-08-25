@@ -44,7 +44,7 @@ public class PlayerControl : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (isRagdolled == false && sub.GetComponent<SubScript>().inSub == false)
+        if (isRagdolled == false && sub.GetComponent<SubScriptNew>().inSub == false)
         {
             plr.SetActive(true);
             player.freezeRotation = true;

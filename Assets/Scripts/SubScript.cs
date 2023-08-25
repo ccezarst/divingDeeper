@@ -94,7 +94,7 @@ public class SubScript : MonoBehaviour
                 }
                 else
                 {
-                    subRB.velocity -= new Vector3(0f,subRB.velocity.y,0f);
+                    subRB.velocity -= new Vector3(0f, subRB.velocity.y, 0f);
                 }
             }
             if (Input.GetKey(KeyCode.Q))
@@ -102,7 +102,7 @@ public class SubScript : MonoBehaviour
                 subRB.velocity += new Vector3(0f, -heightSpeed, 0f) * Time.deltaTime;
             }
             // dont change
-            if(inSub){
+            if (inSub){
                 if (Input.GetKeyDown(KeyCode.F))
                 {
                     manager.actionSub();

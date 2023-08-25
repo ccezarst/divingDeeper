@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEditor;
 using TMPro;
 
+using UnityEngine.SceneManagement;
+
 public class GameManager : MonoBehaviour
 {
     public GameObject subExitText;
@@ -13,6 +15,7 @@ public class GameManager : MonoBehaviour
     public bool inSub = true;
     public bool onPlatform = false;
     private Vector3 lastPlayerSpawn;
+    public int plrMetal { get; private set; }
     // Start is called before the first frame update
 
     private void changeTextVisibility(GameObject textObj, bool visibility){
@@ -94,5 +97,19 @@ public class GameManager : MonoBehaviour
             changeTextVisibility(subEnterText, false);
             changeTextVisibility(subExitText, true);
         }
+    }
+
+    public void plrDeath(){
+        // dont change cuz this loads a new scene and deletes the old 
+        // one so there is no way to go back after u ded
+        SceneManager.LoadScene("Map", LoadSceneMode.Single);
+    }
+
+    public void pickupMetal(int metal){
+        plrMetal += metal;
+        Debug.Log(plrMetal);
+    }
+    public void spendMetal(int metal){
+        plrMetal -= metal;
     }
 }

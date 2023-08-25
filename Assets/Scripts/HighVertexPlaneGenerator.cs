@@ -4,14 +4,21 @@ public class HighVertexPlaneGenerator : MonoBehaviour
 {
     public int gridSize = 100; // Adjust this value to control the number of vertices
     public float scale = 1.0f; // Adjust this value to control the overall size
+    public GameObject sub;
 
     void Start()
     {
         GenerateHighVertexPlane();
+        sub = GameObject.Find("Titan");
     }
     void FixedUpdate()
     {
-        GenerateHighVertexPlane();
+        if (sub.transform.position.y < this.transform.position.y){
+            this.gameObject.GetComponent<MeshRenderer>().enabled = false;
+        }else{
+            this.gameObject.GetComponent<MeshRenderer>().enabled = true;
+        }
+        //GenerateHighVertexPlane();
     }
     private void GenerateHighVertexPlane()
     {
