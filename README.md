@@ -1,2 +1,2 @@
 # divingDeeper
-suck a niga dick
+teammate 4 the game jam left me alone :/
